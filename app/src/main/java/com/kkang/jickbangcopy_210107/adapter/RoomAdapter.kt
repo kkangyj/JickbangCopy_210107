@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import com.kkang.jickbangcopy_210107.R
 import com.kkang.jickbangcopy_210107.data.Room
 
@@ -22,6 +23,11 @@ class RoomAdapter(
             tempRow = inf.inflate(R.layout.room_list_item, null)
         }
         val row = tempRow!!
+
+        val descTxt = row.findViewById<TextView>(R.id.descTxt)
+        val data = mList[position]
+        descTxt.text = data.descriptor
+
         return row
     }
 
