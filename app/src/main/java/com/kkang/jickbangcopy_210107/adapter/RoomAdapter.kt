@@ -28,6 +28,7 @@ class RoomAdapter(
 
         val descTxt = row.findViewById<TextView>(R.id.descTxt)
         val priceTxt = row.findViewById<TextView>(R.id.priceTxt)
+        val addressAndFloorTxt = row.findViewById<TextView>(R.id.addressAndFloorTxt)
 
         val data = mList[position]
         descTxt.text = data.descriptor
@@ -41,6 +42,18 @@ class RoomAdapter(
         } else {
             priceTxt.text = NumberFormat.getNumberInstance(Locale.KOREA).format(data.price)
         }
+
+        val floorStr : String
+
+        if (data.floor >=1) {
+            floorStr = "${data.floor}층"
+        } else if (data.floor == 0) {
+            floorStr = "반지하"
+        } else {
+            floorStr = "지하 ${data.floor}층"
+        }
+
+        addressAndFloorTxt.text = "${data.address}, ${floorStr}"
 
         return row
     }
