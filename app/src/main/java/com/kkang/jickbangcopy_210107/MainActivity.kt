@@ -1,7 +1,9 @@
 package com.kkang.jickbangcopy_210107
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.AdapterView
 import com.kkang.jickbangcopy_210107.adapter.RoomAdapter
 import com.kkang.jickbangcopy_210107.data.Room
 import kotlinx.android.synthetic.main.activity_main.*
@@ -9,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : BaseActivity() {
 
     val mRoomList = ArrayList<Room>()
-    lateinit var mRoomAdapter : RoomAdapter
+    lateinit var mRoomAdapter: RoomAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,6 +21,16 @@ class MainActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+
+        roomListView.setOnItemClickListener { adapterView, view, i, l ->
+
+            val clickRoom = mRoomList[i]
+
+            val myIntent = Intent(mContext, ViewRoomDetailActivity::class.java)
+            myIntent.putExtra("roomInfo", clickRoom)
+            startActivity(myIntent)
+
+        }
 
     }
 

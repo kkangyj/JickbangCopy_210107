@@ -21,6 +21,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/priceTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="가격이 나오는 자리"
@@ -29,6 +30,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/descTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="설명 문구가 나올 자리"
@@ -55,6 +57,7 @@
 
 
         <TextView
+            android:id="@+id/addressTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="00시 00구"
@@ -81,6 +84,7 @@
 
 
         <TextView
+            android:id="@+id/floorTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="00층"

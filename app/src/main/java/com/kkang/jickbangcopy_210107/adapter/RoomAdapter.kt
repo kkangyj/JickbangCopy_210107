@@ -8,8 +8,7 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.kkang.jickbangcopy_210107.R
 import com.kkang.jickbangcopy_210107.data.Room
-import java.text.NumberFormat
-import java.util.*
+
 
 class RoomAdapter(
     val mContext: Context,
@@ -31,29 +30,10 @@ class RoomAdapter(
         val addressAndFloorTxt = row.findViewById<TextView>(R.id.addressAndFloorTxt)
 
         val data = mList[position]
+
         descTxt.text = data.descriptor
-
-        if (data.price >= 10000) {
-            val hm = data.price / 10000
-            val thousand = data.price % 10000
-
-            priceTxt.text = "${hm}억 ${NumberFormat.getNumberInstance(Locale.KOREA).format(thousand)}"
-
-        } else {
-            priceTxt.text = NumberFormat.getNumberInstance(Locale.KOREA).format(data.price)
-        }
-
-        val floorStr : String
-
-        if (data.floor >=1) {
-            floorStr = "${data.floor}층"
-        } else if (data.floor == 0) {
-            floorStr = "반지하"
-        } else {
-            floorStr = "지하 ${data.floor}층"
-        }
-
-        addressAndFloorTxt.text = "${data.address}, ${floorStr}"
+        priceTxt.text = data.getFormattedPrice()
+        addressAndFloorTxt.text = "${data.address}, ${data.getFormattedFloor()}"
 
         return row
     }
